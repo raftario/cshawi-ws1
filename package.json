@@ -1,0 +1,53 @@
+{
+    "name": "cshawi-ws1",
+    "version": "0.1.0",
+    "description": "Scaffolder pour le cours de web serveur 1 @ cshawi",
+    "main": "dist/index.js",
+    "bin": {
+        "ws1": "dist/cli.js"
+    },
+    "repository": "https://github.com/raftario/cshawi-ws1",
+    "author": "Raphaël Thériault <raphael_theriault@outlook.com>",
+    "license": "MIT",
+    "scripts": {
+        "start": "node dist/cli.js",
+        "prepublishOnly": "tsc",
+        "lint": "eslint --fix **/*.ts && prettier --write **/*.{json,md}"
+    },
+    "files": [
+        "dist"
+    ],
+    "dependencies": {
+        "inquirer": "^7.0.4",
+        "yargs": "^15.1.0"
+    },
+    "devDependencies": {
+        "@types/inquirer": "^6.5.0",
+        "@types/node": "^12.12.26",
+        "@types/yargs": "^15.0.2",
+        "@typescript-eslint/eslint-plugin": "^2.18.0",
+        "@typescript-eslint/parser": "^2.18.0",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.10.0",
+        "eslint-plugin-prettier": "^3.1.2",
+        "husky": "^4.2.1",
+        "lint-staged": "^10.0.7",
+        "prettier": "^1.19.1",
+        "typescript": "^3.7.5"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.ts": [
+            "eslint --fix",
+            "git add"
+        ],
+        "*.{json,md}": [
+            "prettier --write",
+            "git add"
+        ]
+    }
+}
